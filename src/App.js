@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import WalletConnect from './components/WalletConnect';
 import TokenCard from './components/TokenCard';
 import PriceChart from './components/PriceChart';
-import TradingPanel from './components/TradingPanel';
-import Portfolio from './components/Portfolio';
 
 function App() {
-  const [walletConnected, setWalletConnected] = useState(false);
-  const [walletAddress, setWalletAddress] = useState('');
   const [tokens, setTokens] = useState([]);
   const [selectedToken, setSelectedToken] = useState(null);
   const [chartData, setChartData] = useState([]);
-  const [portfolio, setPortfolio] = useState([]);
-  const [totalPortfolioValue, setTotalPortfolioValue] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState('all');
 
@@ -170,81 +163,8 @@ function App() {
     return () => clearInterval(interval);
   }, [selectedToken, chartData]);
 
-  const handleWalletConnect = () => {
-    // Simulate wallet connection
-    const mockAddress = '0x' + Math.random().toString(16).substr(2, 40);
-    setWalletAddress(mockAddress);
-    setWalletConnected(true);
-    
-    // Initialize mock portfolio
-    const mockPortfolio = [
-      {
-        name: 'PumpCoin',
-        symbol: 'PUMP',
-        amount: 1250.5,
-        price: 0.00234,
-        value: 2.926,
-        profit: 0.45
-      },
-      {
-        name: 'RocketFuel',
-        symbol: 'FUEL',
-        amount: 500.25,
-        price: 0.01234,
-        value: 6.173,
-        profit: -0.32
-      }
-    ];
-    setPortfolio(mockPortfolio);
-    
-    const total = mockPortfolio.reduce((sum, holding) => sum + holding.value, 0);
-    setTotalPortfolioValue(total);
-  };
-
-  const handleWalletDisconnect = () => {
-    setWalletConnected(false);
-    setWalletAddress('');
-    setPortfolio([]);
-    setTotalPortfolioValue(0);
-  };
-
   const handleTokenSelect = (token) => {
     setSelectedToken(token);
-  };
-
-  const handleTrade = (tradeData) => {
-    console.log('Trade executed:', tradeData);
-    alert(`${tradeData.type.toUpperCase()} ${tradeData.amount} ${tradeData.token.symbol} at $${tradeData.token.price}`);
-    
-    // Update portfolio after trade
-    if (tradeData.type === 'buy') {
-      const existingHolding = portfolio.find(h => h.symbol === tradeData.token.symbol);
-      if (existingHolding) {
-        const updatedPortfolio = portfolio.map(h => {
-          if (h.symbol === tradeData.token.symbol) {
-            const newAmount = h.amount + tradeData.amount;
-            const newValue = newAmount * tradeData.token.price;
-            return { ...h, amount: newAmount, value: newValue };
-          }
-          return h;
-        });
-        setPortfolio(updatedPortfolio);
-      } else {
-        const newHolding = {
-          name: tradeData.token.name,
-          symbol: tradeData.token.symbol,
-          amount: tradeData.amount,
-          price: tradeData.token.price,
-          value: tradeData.amount * tradeData.token.price,
-          profit: 0
-        };
-        setPortfolio([...portfolio, newHolding]);
-      }
-    }
-    
-    // Recalculate total
-    const newTotal = portfolio.reduce((sum, h) => sum + h.value, 0);
-    setTotalPortfolioValue(newTotal);
   };
 
   const filteredTokens = tokens.filter(token => {
@@ -262,14 +182,8 @@ function App() {
         <div className="header-content">
           <div className="logo-section">
             <h1 className="app-title">🚀 PumpFun Washboard</h1>
-            <p className="app-subtitle">Trade. Track. Profit.</p>
+            <p className="app-subtitle">Track trending tokens on Pump.fun</p>
           </div>
-          <WalletConnect 
-            connected={walletConnected}
-            address={walletAddress}
-            onConnect={handleWalletConnect}
-            onDisconnect={handleWalletDisconnect}
-          />
         </div>
       </header>
 
@@ -316,33 +230,14 @@ function App() {
           </div>
         </div>
 
-        <div className="trading-section">
-          <div className="chart-container">
-            {selectedToken && (
+        {selectedToken && (
+          <div className="trading-section">
+            <div className="chart-container">
               <PriceChart 
                 data={chartData}
                 tokenSymbol={selectedToken.symbol}
               />
-            )}
-          </div>
-          
-          <div className="trading-container">
-            {selectedToken && (
-              <TradingPanel 
-                token={selectedToken}
-                walletConnected={walletConnected}
-                onTrade={handleTrade}
-              />
-            )}
-          </div>
-        </div>
-
-        {walletConnected && (
-          <div className="portfolio-section">
-            <Portfolio 
-              holdings={portfolio}
-              totalValue={totalPortfolioValue}
-            />
+            </div>
           </div>
         )}
       </main>
