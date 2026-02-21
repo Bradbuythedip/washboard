@@ -29,7 +29,13 @@ const TokenCard = ({ token, onClick }) => {
   return (
     <div className="token-card" onClick={() => onClick(token)}>
       <div className="token-header">
-        <div className="token-icon">{token.symbol?.charAt(0) || '?'}</div>
+        <div className="token-icon">
+          {token.image ? (
+            <img src={token.image} alt={token.symbol} className="token-image" />
+          ) : (
+            <span className="token-letter">{token.symbol?.charAt(0) || '?'}</span>
+          )}
+        </div>
         <div className="token-info">
           <h3 className="token-name">{token.name || 'Unknown Token'}</h3>
           <span className="token-symbol">{token.symbol || 'UNKNOWN'}</span>
