@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to React App</h1>
+        <h1>Washboard</h1>
         <p>This is a simple counter application</p>
         <div className="counter">
           <button onClick={() => setCount(count - 1)}>-</button>

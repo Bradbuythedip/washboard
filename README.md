@@ -1,4 +1,4 @@
-# React Counter App
+# Washboard
 
 A simple React application with a counter feature.
 
