@@ -1,0 +1,148 @@
+.portfolio {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.portfolio-title {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.portfolio-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.total-label {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.total-value {
+  color: #667eea;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.holdings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.holding-item {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.holding-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.holding-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.holding-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.holding-info {
+  flex: 1;
+}
+
+.holding-name {
+  margin: 0 0 4px 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.holding-symbol {
+  color: #666;
+  font-size: 13px;
+}
+
+.holding-value {
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.holding-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #dee2e6;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #666;
+}
+
+.detail-row span:last-child {
+  color: #333;
+  font-weight: 600;
+}
+
+.profit.positive {
+  color: #27ae60 !important;
+}
+
+.profit.negative {
+  color: #e74c3c !important;
+}
+
+.empty-portfolio {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-portfolio p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.empty-subtitle {
+  margin-top: 8px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #999 !important;
+}

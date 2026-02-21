@@ -1,0 +1,167 @@
+.trading-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+}
+
+.panel-title {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.trade-type-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.type-button {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.type-button.active.buy {
+  background: #27ae60;
+  border-color: #27ae60;
+  color: white;
+}
+
+.type-button.active.sell {
+  background: #e74c3c;
+  border-color: #e74c3c;
+  color: white;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.trade-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.trade-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.slippage-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.slippage-button {
+  padding: 8px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.slippage-button.active {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.slippage-input {
+  padding: 8px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.slippage-input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.trade-summary {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.summary-row:last-child {
+  margin-bottom: 0;
+  padding-top: 8px;
+  border-top: 2px solid #ddd;
+  color: #333;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.total-amount {
+  color: #667eea;
+}
+
+.execute-button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.execute-button.buy {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+}
+
+.execute-button.sell {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+.execute-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.execute-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
